@@ -20,6 +20,7 @@ const todos = [
     "id": '34234',
     "title": 'Install React',
     "isDone": true,
+    "date": '3-05-2019',
     "activities":[{ 
       id: '1234_1',
       name: 'Visit NodeJs site',
@@ -27,6 +28,21 @@ const todos = [
     }]
   }
 ]
+
+// FECTH FROM API
+fetch('https://randomuser.me/api/')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(JSON.stringify(myJson));
+  });
+
+
+function AddNewToDo(){
+  let taskName = document.getElementById("new-task").val;
+  console.log(taskName);
+}
 
 function App() {
   return (
@@ -50,8 +66,8 @@ function App() {
         </section>
         {/* add a new task */}
         <section>
-          <input className="new-task" placeholder="Add new Task"/>
-          <button className="addTodo">Add Task</button>
+          <input className="new-task" placeholder="Add new Task" id="new-task"/>
+          <button className="addTodo" onClick={AddNewToDo}>Add Task</button>
         </section>
       </main>
     </div>
