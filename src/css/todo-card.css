@@ -2,12 +2,21 @@
     display: flex;
     box-shadow: 0px 0px 4px 1px #ccc;
     min-height: 20vh;
+    height: auto;
     width: calc(100% - 10px);
     margin: 10px 5px;
+    padding: 20px 0px;
     border-radius: 3px;
+    flex-flow:column;
+    flex-direction: column;
+    justify-content: center;
 }
-.activity{
-    display: inline-block;
-    width: 80%;
-    min-height: 0px;
+.todo-card span:nth-child(1){
+    flex-flow: row;
+}
+.todo-card span:nth-child(2){
+    margin: 0 auto;
+    border:1px dotted #ccc;
+    width: 70%;
+    border-radius:50px;
 }

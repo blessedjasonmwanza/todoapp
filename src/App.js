@@ -7,7 +7,7 @@ import ToDoCard from './components/todo-card';
 const todos = [
   {
     "id": '1234',
-    "title": 'Install Node Js',
+    "title": 'Build App',
     "date": '20-06-2019',
     "isDone": false,
     "activities":[{ 
@@ -19,6 +19,36 @@ const todos = [
   {
     "id": '34234',
     "title": 'Install React',
+    "isDone": false,
+    "date": '3-05-2019',
+    "activities":
+    [
+      { 
+        id: '1234_1',
+        name: 'Install create-react-app',
+        isDone: false
+      },
+      { 
+        id: '1234_1',
+        name: 'install yarn',
+        isDone: false
+      }
+    ]
+  },
+  {
+    "id": '34234',
+    "title": 'Install NPM',
+    "isDone": true,
+    "date": '3-05-2019',
+    "activities":[{ 
+      id: '1234_1',
+      name: 'Visit NPM site',
+      isDone: true
+    }]
+  },
+  {
+    "id": '64234',
+    "title": 'Install NodeJS',
     "isDone": true,
     "date": '3-05-2019',
     "activities":[{ 
@@ -29,14 +59,19 @@ const todos = [
   }
 ]
 
-// FECTH FROM API
-fetch('https://randomuser.me/api/')
+// FECTH FROM API Template 
+// random for testing purposes only
+if(navigator.onLine){
+  // only fetch data when internet is active
+  fetch('https://randomuser.me/api/')
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
     console.log(JSON.stringify(myJson));
-  });
+  })
+}
+
 
 
 function AddNewToDo(){
@@ -50,8 +85,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <nav className="App-menu">
-          <a href="#" >Pending</a>
-          <a href="#">Completed</a>
+          <a href="#">To Do G3</a>
         </nav>
       </header>
       <main>
@@ -60,7 +94,7 @@ function App() {
         
         {
           todos.map(todo => {
-            return(<ToDoCard id = {todo.id} title = {todo.title} date={todo.date} isDone={todo.isDone} />);
+            return(<ToDoCard id = {todo.id} title = {todo.title} date={todo.date} isDone={todo.isDone} activities = {todo.activities}/>);
           })
         }
         </section>

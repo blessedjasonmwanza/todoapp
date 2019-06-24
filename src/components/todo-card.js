@@ -1,8 +1,9 @@
-// Shoud carry (id, Title, date, dueDate, isDone)
+// Shoud carry (id, Title, date, isDone)
 import React from 'react';
-const ToDoCard  = ({id, title, date, isDone}) =>{
+const ToDoCard  = ({id, title, date, isDone, activities}) =>{
     return(
         <div className="todo-card" id={id}>
+            <span>
             {
                    isDone ? <input type="checkbox" disabled checked /> :<input type="checkbox" />
             }
@@ -11,7 +12,23 @@ const ToDoCard  = ({id, title, date, isDone}) =>{
             }
             
             <date>  {date} </date>
+            </span>
+
+            <span>{
+                activities.map(item=>{
+                    return(
+                    <div>
+                        <h1>{item["title"]}</h1>
+                    </div>
+
+                    );                   
+
+                })
+            }
+            </span>
         </div>
     );
+
+
 }
 export default ToDoCard;
