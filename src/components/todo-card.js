@@ -1,6 +1,6 @@
 // Shoud carry (id, Title, date, isDone)
 import React from 'react';
-const ToDoCard  = ({id, title, date, isDone, activities}) =>{
+const ToDoCard  = ({id, title, date, isDone}) =>{
     return(
         <div className="todo-card" id={id}>
             <span>
@@ -12,19 +12,6 @@ const ToDoCard  = ({id, title, date, isDone, activities}) =>{
             }
             
             <date>  {date} </date>
-            </span>
-
-            <span>{
-                activities.map(item=>{
-                    return(
-                    <div>
-                        <h1>{item["title"]}</h1>
-                    </div>
-
-                    );                   
-
-                })
-            }
             </span>
         </div>
     );

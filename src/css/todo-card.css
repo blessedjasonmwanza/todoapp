@@ -1,8 +1,6 @@
 .todo-card{
     display: flex;
-    box-shadow: 0px 0px 4px 1px #ccc;
-    min-height: 20vh;
-    height: auto;
+    box-shadow: 0px 0px 4px 1px #ccc;    
     width: calc(100% - 10px);
     margin: 10px 5px;
     padding: 20px 0px;
@@ -19,4 +17,9 @@
     border:1px dotted #ccc;
     width: 70%;
     border-radius:50px;
+    font-size: small;
+    overflow: hidden;
+}
+.todo-card span:nth-child(2) h1{
+    border-bottom:  1px dotted rgb(196, 194, 191);
 }

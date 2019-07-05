@@ -4,82 +4,41 @@ import './App.css';
 import './css/todo-card.css';
 import ToDoCard from './components/todo-card';
 
-const todos = [
-  {
-    "id": '1234',
-    "title": 'Build App',
-    "date": '20-06-2019',
-    "isDone": false,
-    "activities":[{ 
-      id: '1234_1',
-      name: 'Visit NodeJs site',
-      isDone: false
-    }]
-  },
-  {
-    "id": '34234',
-    "title": 'Install React',
-    "isDone": false,
-    "date": '3-05-2019',
-    "activities":
-    [
-      { 
-        id: '1234_1',
-        name: 'Install create-react-app',
-        isDone: false
-      },
-      { 
-        id: '1234_1',
-        name: 'install yarn',
-        isDone: false
-      }
-    ]
-  },
-  {
-    "id": '34234',
-    "title": 'Install NPM',
-    "isDone": true,
-    "date": '3-05-2019',
-    "activities":[{ 
-      id: '1234_1',
-      name: 'Visit NPM site',
-      isDone: true
-    }]
-  },
-  {
-    "id": '64234',
-    "title": 'Install NodeJS',
-    "isDone": true,
-    "date": '3-05-2019',
-    "activities":[{ 
-      id: '1234_1',
-      name: 'Visit NodeJs site',
-      isDone: true
-    }]
-  }
-]
 
-// FECTH FROM API Template 
-// random for testing purposes only
 if(navigator.onLine){
   // only fetch data when internet is active
-  fetch('https://randomuser.me/api/')
+  fetch('https://jsonplaceholder.typicode.com/todos')
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
-    console.log(JSON.stringify(myJson));
+    const results = JSON.stringify(myJson);
+    const listArea = document.querySelector("#list-todos");
+    if(results.length > 10){
+      for (let i = 0; i < 10; i++) {       
+        const todo = myJson[i];
+        let id = todo.id;
+        let title = todo.title;
+        let isDone = todo.completed;
+        listArea.innerHTML = <ToDoCard  id={id} title = {title}  isDone = {isDone}/>;
+        
+      }
+
+    }else{
+      console.log('You don\'t have any task added to your to do list yet.' );
+    }
   })
 }
 
 
 
 function AddNewToDo(){
-  let taskName = document.getElementById("new-task").val;
+  let taskName = document.getElementById("new-task").value;
   console.log(taskName);
 }
 
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -90,13 +49,10 @@ function App() {
       </header>
       <main>
         {/* display to do's */}
-        <section className="list-todos">
+
+        <section className="list-todos" id="list-todos">
+       
         
-        {
-          todos.map(todo => {
-            return(<ToDoCard id = {todo.id} title = {todo.title} date={todo.date} isDone={todo.isDone} activities = {todo.activities}/>);
-          })
-        }
         </section>
         {/* add a new task */}
         <section>
